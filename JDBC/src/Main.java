@@ -7,7 +7,10 @@
 * 5. Execute the query
 * 6. Process the results
 * 7. Close the connection
-* */
+*
+    *
+    * DAO --> Whenever working with databases, have a DOA layer ( database access object)
+*  */
 
 
 
@@ -18,15 +21,22 @@ public class Main {
         String url = "jdbc:mysql://localhost:3306/learningjdbc";
         String uname = "root";
         String pass = "Sidjais@9534";
-        String query = "Select * from student where FirstName = 'ram' ";
+        String query = "insert into student values('jaiswal', ' siddhant', 'informatica') ";
         Connection con = DriverManager.getConnection(url, uname, pass);
         Statement st = con.createStatement();
-        ResultSet rs =  st.executeQuery(query);
-        rs.next();
-        String name = rs.getString("FirstName");
-        String lastname = rs.getString("LastName");
-        System.out.println(name);
-        System.out.println(lastname);
+        int rs =  st.executeUpdate(query);
+        System.out.println("ROWS AFFECTED "+rs);
+//        while(rs.next()) {
+//
+//            String name = rs.getString("FirstName");
+//            String lastname = rs.getString("LastName");
+//            System.out.println(name);
+//        System.out.println(lastname);
+////            rs.next();
+//
+//        }
+//        System.out.println(name);
+//        System.out.println(lastname);
         st.close();;
         con.close();
 
